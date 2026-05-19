@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Studio - Solusi Desain Profesional</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --accent: #ff6b6b;
+            --secondary: #4ecdc4;
+            --light: #f7f7f7;
+            --text: #2d3436;
+            --border: #dfe6e9;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVBAR ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-btn {
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid var(--accent);
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+            }
+            nav {
+                padding: 1rem 3%;
+            }
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            padding: 2rem;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(78, 205, 196, 0.2) 0%, transparent 70%);
+            top: -200px;
+            right: -200px;
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255, 107, 107, 0.15) 0%, transparent 70%);
+            bottom: -150px;
+            left: -150px;
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(30px); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            text-align: center;
+            z-index: 2;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #fff 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -1px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid white;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        /* ===== FEATURES SECTION ===== */
+        .features {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin-bottom: 3rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid var(--accent);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .feature-card p {
+            color: #7f8c8d;
+            line-height: 1.8;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--secondary);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .service-item:hover::before {
+            left: 0;
+        }
+
+        .service-item:hover {
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .service-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-item p {
+            opacity: 0.9;
+            line-height: 1.7;
+        }
+
+        /* ===== PRICING SECTION ===== */
+        .pricing {
+            padding: 6rem 5%;
+            background: var(--light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.2);
+        }
+
+        .badge {
+            position: absolute;
+            top: -12px;
+            right: 20px;
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .plan-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .plan-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin: 1rem 0;
+        }
+
+        .plan-price span {
+            font-size: 1rem;
+            color: #7f8c8d;
+        }
+
+        .plan-features {
+            text-align: left;
+            margin: 2rem 0;
+            border-top: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            padding: 2rem 0;
+        }
+
+        .plan-features li {
+            list-style: none;
+            padding: 0.7rem 0;
+            color: #7f8c8d;
+        }
+
+        .plan-features li::before {
+            content: '✓ ';
+            color: var(--secondary);
+            font-weight: 700;
+            margin-right: 0.5rem;
+        }
+
+        /* ===== TESTIMONIAL SECTION ===== */
+        .testimonials {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.3);
+        }
+
+        .stars {
+            color: #ffd700;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .author-name {
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-title {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgba(255, 107, 107, 0.2);
+            padding-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+        .contact {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--primary) 0%, #16213e 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 0 20px rgba(78, 205, 196, 0.3);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .btn-submit {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            background: #ff5252;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+
+        /* ===== SCROLL ANIMATIONS ===== */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- NAVBAR -->
+    <nav>
+        <div class="logo">PREMIUM</div>
+        <ul class="nav-links">
+            <li><a href="#features">Fitur</a></li>
+            <li><a href="#services">Layanan</a></li>
+            <li><a href="#pricing">Harga</a></li>
+            <li><a href="#contact">Kontak</a></li>
+        </ul>
+        <a href="#contact" class="cta-btn">Hubungi Kami</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transformasi Digital untuk Bisnis Anda</h1>
+            <p>Solusi terpadu yang dirancang untuk meningkatkan produktivitas dan kesuksesan bisnis Anda dengan teknologi terkini.</p>
+            <div class="hero-buttons">
+                <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Mulai Sekarang</button>
+                <button class="btn-secondary" onclick="document.getElementById('services').scrollIntoView({behavior: 'smooth'})">Pelajari Lebih</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features">
+        <h2 class="section-title">Keunggulan Kami</h2>
+        <p class="section-subtitle">Mengapa memilih kami untuk kebutuhan bisnis Anda</p>
+        <div class="features-grid">
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">⚡</div>
+                <h3>Cepat & Efisien</h3>
+                <p>Layanan kami dirancang untuk memberikan hasil maksimal dalam waktu minimal dengan teknologi terdepan.</p>
+            </div>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🔒</div>
+                <h3>Aman & Terpercaya</h3>
+                <p>Keamanan data Anda adalah prioritas utama kami dengan enkripsi tingkat enterprise.</p>
+            </div>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">🎯</div>
+                <h3>Hasil yang Terukur</h3>
+                <p>Setiap kampanye dilengkapi dengan analytics mendalam untuk memastikan ROI yang optimal.</p>
+            </div>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">👥</div>
+                <h3>Tim Profesional</h3>
+                <p>Tim ahli kami siap membantu Anda 24/7 untuk memastikan kesuksesan bisnis Anda.</p>
+            </div>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">💡</div>
+                <h3>Inovasi Berkelanjutan</h3>
+                <p>Kami terus berinovasi untuk memberikan solusi terbaik yang sesuai dengan kebutuhan pasar.</p>
+            </div>
+            <div class="feature-card scroll-reveal">
+                <div class="feature-icon">📈</div>
+                <h3>Pertumbuhan Bisnis</h3>
+                <p>Strategi kami terbukti meningkatkan pendapatan bisnis klien hingga 300% dalam setahun.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="services" id="services">
+        <h2 class="section-title">Layanan Kami</h2>
+        <p class="section-subtitle">Paket lengkap untuk semua kebutuhan bisnis Anda</p>
+        <div class="services-grid">
+            <div class="service-item scroll-reveal">
+                <h4>🌐 Desain Web</h4>
+                <p>Website profesional yang menarik, responsif, dan dioptimalkan untuk konversi tinggi.</p>
+            </div>
+            <div class="service-item scroll-reveal">
+                <h4>📱 Aplikasi Mobile</h4>
+                <p>Aplikasi mobile native dan hybrid dengan fitur lengkap untuk iOS dan Android.</p>
+            </div>
+            <div class="service-item scroll-reveal">
+                <h4>📊 Digital Marketing</h4>
+                <p>Strategi pemasaran digital komprehensif untuk meningkatkan brand awareness dan penjualan.</p>
+            </div>
+            <div class="service-item scroll-reveal">
+                <h4>🎨 Branding & Design</h4>
+                <p>Identitas brand yang kuat dan konsisten di semua platform komunikasi Anda.</p>
+            </div>
+            <div class="service-item scroll-reveal">
+                <h4>📧 Email Marketing</h4>
+                <p>Kampanye email yang dipersonalisasi untuk meningkatkan engagement dan loyalitas pelanggan.</p>
+            </div>
+            <div class="service-item scroll-reveal">
+                <h4>🔍 SEO Optimization</h4>
+                <p>Optimasi mesin pencari untuk menempatkan website Anda di halaman pertama Google.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION -->
+    <section class="pricing" id="pricing">
+        <h2 class="section-title">Paket Harga</h2>
+        <p class="section-subtitle">Pilih paket yang sesuai dengan kebutuhan dan budget Anda</p>
+        <div class="pricing-grid">
+            <div class="pricing-card scroll-reveal">
+                <div class="plan-name">Starter</div>
+                <div class="plan-price">Rp 2.5<span>juta/bulan</span></div>
+                <ul class="plan-features">
+                    <li>Website dasar (5 halaman)</li>
+                    <li>Email support</li>
+                    <li>Analytics dasar</li>
+                    <li>2 revisi konten/bulan</li>
+                </ul>
+                <button class="btn-primary">Pilih Paket</button>
+            </div>
+            <div class="pricing-card featured scroll-reveal">
+                <div class="badge">PALING POPULER</div>
+                <div class="plan-name">Professional</div>
+                <div class="plan-price">Rp 5<span>juta/bulan</span></div>
+                <ul class="plan-features">
+                    <li>Website premium (15 halaman)</li>
+                    <li>Chat support 24/7</li>
+                    <li>Advanced analytics</li>
+                    <li>Unlimited revisi</li>
+                    <li>Social media management</li>
+                    <li>Blog optimization</li>
+                </ul>
+                <button class="btn-primary">Pilih Paket</button>
+            </div>
+            <div class="pricing-card scroll-reveal">
+                <div class="plan-name">Enterprise</div>
+                <div class="plan-price">Custom</div>
+                <ul class="plan-features">
+                    <li>Solusi custom sepenuhnya</li>
+                    <li>Dedicated account manager</li>
+                    <li>Integrasi API unlimited</li>
+                    <li>Priority support</li>
+                    <li>Konsultasi strategis</li>
+                    <li>Performance guarantee</li>
+                </ul>
+                <button class="btn-primary">Hubungi Sales</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="testimonials">
+        <h2 class="section-title">Apa Kata Klien Kami</h2>
+        <p class="section-subtitle">Kepuasan pelanggan adalah kesuksesan kami</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card scroll-reveal">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Layanan mereka benar-benar mengubah bisnis kami. Dalam 6 bulan, penjualan kami meningkat 250%!"</p>
+                <div class="author-name">Budi Santoso</div>
+                <div class="author-title">CEO, PT Maju Jaya</div>
+            </div>
+            <div class="testimonial-card scroll-reveal">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Tim mereka sangat profesional dan responsif. Mereka benar-benar memahami kebutuhan bisnis kami."</p>
+                <div class="author-name">Siti Nurhaliza</div>
+                <div class="author-title">Founder, Siti Creative Studio</div>
+            </div>
+            <div class="testimonial-card scroll-reveal">
+                <div class="stars">⭐⭐⭐⭐⭐</div>
+                <p class="testimonial-text">"Investasi terbaik yang pernah kami lakukan. ROI-nya luar biasa dan support mereka sangat membantu."</p>
+                <div class="author-name">Ahmad Wijaya</div>
+                <div class="author-title">Director, E-Commerce Solutions</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <h2>Siap untuk Memulai?</h2>
+        <p>Hubungi kami hari ini dan dapatkan konsultasi gratis untuk bisnis Anda</p>
+        <form class="contact-form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Nama Lengkap</label>
+                <input type="text" id="name" name="name" placeholder="Masukkan nama Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="email@example.com" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Nomor Telepon</label>
+                <input type="tel" id="phone" name="phone" placeholder="Nomor telepon Anda" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Pesan</label>
+                <textarea id="message" name="message" placeholder="Ceritakan kebutuhan bisnis Anda..." required></textarea>
+            </div>
+            <button type="submit" class="btn-submit">Kirim Pesan</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Tentang Kami</h4>
+                <p>Premium Studio adalah partner terpercaya untuk transformasi digital bisnis Anda dengan solusi inovatif dan tim profesional.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Navigasi</h4>
+                <ul>
+                    <li><a href="#features">Fitur</a></li>
+                    <li><a href="#services">Layanan</a></li>
+                    <li><a href="#pricing">Harga</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Kontak</h4>
+                <ul>
+                    <li>📞 (021) 1234-5678</li>
+                    <li>📧 hello@premium.co.id</li>
+                    <li>📍 Jakarta, Indonesia</li>
+                    <li>⏰ Buka 09:00 - 18:00 WIB</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Ikuti Kami</h4>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                    <li><a href="#">Twitter</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Premium Studio. Semua hak cipta dilindungi. | <a href="#" style="color: inherit;">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll reveal on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Simulate form submission (in production, this would send to a server)
+            console.log('Form submitted:', { name, email, phone, message });
+            alert('Terima kasih! Pesan Anda telah dikirim. Tim kami akan segera menghubungi Anda.');
+            event.target.reset();
+        }
+
+        // Navbar active link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                document.querySelectorAll('.nav-links a').forEach(l => l.style.color = '#fff');
+                this.style.color = 'var(--accent)';
+            });
+        });
+    </script>
+</body>
+</html>
+
